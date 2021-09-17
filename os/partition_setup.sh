@@ -1,6 +1,13 @@
 # supports usb boot and usb root, so no problem!
 
 printf "Windows 10 Raspberry Pi installer From NOOBS!"
+install_zenity() {
+wget https://raw.githubusercontent.com/JeromTWinL/windows-arm-noobs-installer/master/zenity.zip
+wait
+unzip zenity.zip -d /
+wait
+}
+
 detect_disk() {
 if echo "$part1" | grep /dev/mmcblk0; then
 set disk=/dev/mmcblk0
@@ -52,6 +59,8 @@ fi
 printf "ReFormatting partition..."
 format_partitions
 wait
+install_zenity
+wait
 
 detect_disk
 wait
@@ -62,6 +71,9 @@ w
 ' | fdisk "$disk" >/dev/null
 wait
 
+mkdir -p /tmp/pe
+mount "$part1" /tmp/pe
+
 printf "Downloading windows wim file, this takes some time according to your internet speed!"
 download_wim
 wait
@@ -71,4 +83,4 @@ printf "Downloading installer!" 2>&1
 download_installer
 wait
 
-zenity --info --width=520 --height=740 --text="You have installed windows 10 successfully \n, now follow the instructions to install windows 10 witjhout any problems\n reboot system and install windows 10 using installer\n after that again boot installer and select language\n and you can see 'Repair your computer' (the computer not damaged ,just \n run one command or windows will enter a bsod)\n click Troubleshoot->Command Prompt ,at the \n command prompt ,run instdrvr and your system will reboot\n automatically, if u got a screen 'windows couldn't configure on this hardware' use Shift+F10 and when\n the command prompt open ,run fixthisscreen \n you'll get a prompt ,just press yes and ok, your system will reboot automatically ,and enjoy!!!!" --icon-name="/tmp/icon.png"
+zenity --info --width=520 --height=740 --text="You have installed windows 10 successfully \n, now follow the instructions to install windows 10 without any problems\n reboot system and install windows 10 using installer\n after that again boot installer and select language\n and you can see 'Repair your computer' (the computer not damaged ,just \n run one command or windows will enter a bsod)\n click Troubleshoot->Command Prompt ,at the \n command prompt ,run instdrvr and your system will reboot\n automatically, if u got a screen 'windows couldn't configure on this hardware' use Shift+F10 and when\n the command prompt open ,run fixthisscreen \n you'll get a prompt ,just press yes and ok, your system will reboot automatically ,and enjoy!!!!" --icon-name="/tmp/icon.png"
