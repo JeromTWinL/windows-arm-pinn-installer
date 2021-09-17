@@ -34,7 +34,7 @@ mkdir -p /tmp/pe/sources
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id='"$FILEUUID" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=$FILEUUID" -O "$FILENAME" 2>&1 | sed -u 's/^[a-zA-Z\-].*//; s/.* \{1,2\}\([0-9]\{1,3\}\)%.*/\1\n#Downloading... \1%/; s/^20[0-9][0-9].*/#Done./' | zenity --progress --percentage=0 --title=Download dialog --text='Starting... ' --auto-close --auto-kill
 wait
 rm -rf /tmp/cookies.txt
-qait
+wait
 
 }
 download_installer() {
@@ -77,12 +77,18 @@ mount "$part1" /tmp/pe
 printf "Downloading windows wim file, this takes some time according to your internet speed!"
 download_wim
 wait
-printf "Downloaded windows wim!"
 
 printf "Downloading installer!" 2>&1
 download_installer
 wait
 
+if ! [ -f /tmp/pe/sources/install.wim ] || [ -f /tmp/pe/sources/boot.wim ]; then
+Printf "ERROR: installation finished with error!" 1>&2
+exit 1
+fi
+
 wget https://github.com/JeromTWinL/windows-arm-noobs-installer/raw/main/os/Windows10-arm.png -O /tmp/icon.png
+wait
 
 zenity --info --width=760 --height=1270 --text="You have installed windows 10 successfully \n, now follow the instructions to install windows 10 without any problems\n reboot system and install windows 10 using installer\n after that again boot installer and select language\n and you can see 'Repair your computer' (the computer not damaged ,just \n run one command or windows will enter a bsod)\n click Troubleshoot->Command Prompt ,at the \n command prompt ,run instdrvr and your system will reboot\n automatically, if u got a screen 'windows couldn't configure on this hardware' use Shift+F10 and when\n the command prompt open ,run fixthisscreen \n you'll get a prompt ,just press yes and ok, your system will reboot automatically ,and enjoy!!!!" --icon-name="/tmp/icon.png"
+wait
