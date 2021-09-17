@@ -1,0 +1,20 @@
+{
+  "partitions": [
+    {
+      "label": "EFIESP",
+      "filesystem_type": "FAT",
+      "partition_size_nominal": 5420,
+      "want_maximised": false,
+      "empty_fs": true,
+      "requires_partition_number": 2
+    },
+    {
+      "label": "Windows",
+      "filesystem_type": "ntfs",
+      "partition_size_nominal": 17540,
+      "uncompressed_tarball_size": 12670,
+      "want_maximised": true,
+      "empty_fs": true
+    }
+  ]
+}

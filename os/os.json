@@ -1,0 +1,8 @@
+{
+  "name": "Windows 10 (arm-64)",
+  "release_date": "2021-09-16",
+  "description": "Windows 10 arm build 17760.1 noobs version (wim file by empyreal96.github.io).",
+  "url": "https://github.com/JeromTWinL/windows-arm-noobs-installer"
+  "bootable": true,
+  "supported_models": ["Pi 3"]
+}
