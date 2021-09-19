@@ -14,3 +14,7 @@ You can issue to use your windows wim file
 WARNING:The wim must be upload in google drive!
 
 WARNING:The wim must be windows 10 (only rpi3 is supported and the new windows 11 needs 4gb ram)!
+
+#### why rpi3 is only supported?
+I'm using rpi3, so the rpi4 will be testing
+
