@@ -22,7 +22,7 @@
 		},
 		{
 			"name" : "JeromTWinL",
-			"url"  : "https://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os_list_v3.json"
+			"url"  : "https://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/main/os_list_v3.json"
 		}
 	]
 }
