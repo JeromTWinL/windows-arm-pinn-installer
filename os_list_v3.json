@@ -4,7 +4,7 @@
             "os_name": "Windows 10 (arm-64bit)",
             "description": "Windows 10 arm build 17760.1 pinn version (wim file by empyreal96.github.io).",
             "download_size": 13472,
-            "icon": "https://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/Windows10-arm.png",
+            "icon": "https://github.com/JeromTWinL/windows-arm-pinn-installer/raw/master/os/Windows10-arm.png",
             "marketing_info": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/marketing.tar",
             "nominal_size": 20456,
             "os_info": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/os.json",
