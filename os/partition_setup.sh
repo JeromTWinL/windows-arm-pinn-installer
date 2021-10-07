@@ -50,21 +50,11 @@ unzip installer.zip -d /tmp/pe >/dev/null
 wait
 }
 
-format_partitions() {
-mkfs.fat -n EFIESP "$part1"
-wait mkfs.fat
-mkfs.ntfs -L Windows "$part2" --fast
-wait mkfs.ntfs
-}
-
 if [ -z "$part1" ] || [ -z "$part2" ]; then
 printf "ERROR: there is no part1 and part2, try to reinstall!"
 exit 1
 fi
 
-printf "ReFormatting partition..."
-format_partitions
-wait
 install_zenity
 wait
 
