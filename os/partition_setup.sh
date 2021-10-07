@@ -1,5 +1,10 @@
 # supports usb boot and usb root, so no problem!
 
+if [ -z "$part1" ] || [ -z "$part2" ]; then
+printf "Error: missing environment variable part 1 part2!" 2>&1
+exit 1
+fi
+
 printf "Windows 10 Raspberry Pi installer From NOOBS!"
 install_zenity() {
 wget https://raw.githubusercontent.com/JeromTWinL/windows-arm-noobs-installer/master/zenity.zip
@@ -26,12 +31,13 @@ fi
 }
 
 download_wim() {
-
-set FILEUUID="199P9lS3blZKUPAPgVtDlxPwBJOKdU1yg"
 set FILENAME="/tmp/pe/sources/install.wim"
 mkdir -p /tmp/pe/sources
 
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id='"$FILEUUID" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=$FILEUUID" -O "$FILENAME" 2>&1 | sed -u 's/^[a-zA-Z\-].*//; s/.* \{1,2\}\([0-9]\{1,3\}\)%.*/\1\n#Downloading... \1%/; s/^20[0-9][0-9].*/#Done./' | zenity --progress --percentage=0 --title=Download dialog --text='Starting... ' --auto-close --auto-kill
+confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=199P9lS3blZKUPAPgVtDlxPwBJOKdU1yg' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
+wait
+
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(echo ${confirm})&id=199P9lS3blZKUPAPgVtDlxPwBJOKdU1yg" -O "$FILENAME" 2>&1 | sed -u 's/^[a-zA-Z\-].*//; s/.* \{1,2\}\([0-9]\{1,3\}\)%.*/\1\n#Downloading... \1%/; s/^20[0-9][0-9].*/#Done./' | zenity --progress --percentage=0 --title=Download dialog --text='Starting... ' --auto-close --auto-kill
 wait
 rm -rf /tmp/cookies.txt
 wait
@@ -39,9 +45,9 @@ wait
 }
 download_installer() {
 wget 
-wait wget
+wait
 unzip installer.zip -d /tmp/pe >/dev/null
-wait unzip
+wait
 }
 
 format_partitions() {
