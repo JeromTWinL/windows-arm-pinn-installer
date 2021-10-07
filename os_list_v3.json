@@ -4,18 +4,18 @@
             "os_name": "Windows 10 (arm-64bit)",
             "description": "Windows 10 arm build 17760.1 pinn version (wim file by empyreal96.github.io).",
             "download_size": 13472,
-            "icon": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-noobs-installer/master/os/windows10-arm.png",
-            "marketing_info": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-noobs-installer/master/os/marketing.tar",
+            "icon": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/windows10-arm.png",
+            "marketing_info": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/marketing.tar",
             "nominal_size": 20456,
-            "os_info": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-noobs-installer/master/os/os.json",
-            "partition_setup": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-noobs-installer/master/os/partition_setup.sh",
-            "partitions_info": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-noobs-installer/master/os/partitions.json",
+            "os_info": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/os.json",
+            "partition_setup": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/partition_setup.sh",
+            "partitions_info": "http://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/partitions.json",
             "release_date": "2021-09-16",
             "supported_models": [
                 "Pi 3"
             ],
             "tarballs": [
-                "http://raw.githubusercontent.com/JeromTWinL/windows-arm-noobs-installer/master/os/boot.tar.xz",
+                "http://raw.githubusercontent.com/JeromTWinL/windows-arm-pinn-installer/master/os/boot.tar.xz",
                 ""
             ]
         }
