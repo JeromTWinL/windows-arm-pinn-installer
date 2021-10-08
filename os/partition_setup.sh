@@ -44,9 +44,13 @@ wait
 
 }
 download_installer() {
-wget 
+url=$(wget --quiet 'https://www.mediafire.com/?4zrtvg8652gj3jt' -O- | grep "href.*download.*media.*" | tail -1 | cut -d '"' -f 2)
 wait
-unzip installer.zip -d /tmp/pe >/dev/null
+wget "$url" --output-document=/tmp/pe
+wait
+unzip /tmp/pe/installer.zip -d /tmp/pe
+wait
+rm /tmp/pe/installer.zip -rf
 wait
 }
 
@@ -70,20 +74,31 @@ wait
 mkdir -p /tmp/pe
 mount "$part1" /tmp/pe
 
+mkdir -p/tmp/pe/sources
+
+if [ -f /mnt/install.wim ]; then
+printf "the following wim file is already exits, using that wim file" >&2
+cp /mnt/install.wim /tmp/pe/sources/install.wim
+wait
+elif [ -if /mnt/install.esd ]; then
+printf "the following disk contains install.esd, using that" >&2
+cp /mnt/install.esd /tmp/pe/sources/install.esd
+else
 printf "Downloading windows wim file, this takes some time according to your internet speed!"
 download_wim
 wait
+fi
 
 printf "Downloading installer!" 2>&1
 download_installer
 wait
 
-if ! [ -f /tmp/pe/sources/install.wim ] || [ -f /tmp/pe/sources/boot.wim ]; then
+if ! [ -f /tmp/pe/sources/install.wim ] || [ -f /tmp/pe/sources/install.esd ] || [ -f /tmp/pe/sources/boot.wim ]; then
 Printf "ERROR: installation finished with error!" 1>&2
 exit 1
 fi
 
-wget https://github.com/JeromTWinL/windows-arm-noobs-installer/raw/main/os/Windows10-arm.png -O /tmp/icon.png
+wget https://github.com/JeromTWinL/windows-arm-pinn-installer/raw/master/os/Windows10-arm.png --output-document=/tmp/icon.png
 wait
 
 zenity --info --width=760 --height=1270 --text="You have installed windows 10 successfully \n, now follow the instructions to install windows 10 without any problems\n reboot system and install windows 10 using installer\n after that again boot installer and select language\n and you can see 'Repair your computer' (the computer not damaged ,just \n run one command or windows will enter a bsod)\n click Troubleshoot->Command Prompt ,at the \n command prompt ,run instdrvr and your system will reboot\n automatically, if u got a screen 'windows couldn't configure on this hardware' use Shift+F10 and when\n the command prompt open ,run fixthisscreen \n you'll get a prompt ,just press yes and ok, your system will reboot automatically ,and enjoy!!!!" --icon-name="/tmp/icon.png"
