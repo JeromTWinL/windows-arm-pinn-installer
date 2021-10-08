@@ -44,6 +44,10 @@ wait
 
 }
 download_installer() {
+if [ -f /mnt/installer.zip ]; then
+unzip /mnt/installer.zip -d /tmp/pe
+wait
+else
 url=$(wget --quiet 'https://www.mediafire.com/?4zrtvg8652gj3jt' -O- | grep "href.*download.*media.*" | tail -1 | cut -d '"' -f 2)
 wait
 wget "$url" --output-document=/tmp/pe
@@ -52,6 +56,7 @@ unzip /tmp/pe/installer.zip -d /tmp/pe
 wait
 rm /tmp/pe/installer.zip -rf
 wait
+fi
 }
 
 if [ -z "$part1" ] || [ -z "$part2" ]; then
