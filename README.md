@@ -8,13 +8,9 @@ Please make sure don't use this repository to install till proccess finishes!
 ### wim
 The wim file's owner is [empyreal96](https://empyreal96.github.io)
 
-### custom wim
-You can issue to use your windows wim file
-
-WARNING:The wim must be upload in google drive!
-
-WARNING:The wim must be windows 10 (only rpi3 is supported and the new windows 11 needs 4gb ram)!
-
+### discontinued
+This project was discontinued
+Develop this project by working this repository
 #### why rpi3 is only supported?
 I'm using rpi3, so the rpi4 will be testing (only shows on rpi3!)
 
