@@ -10,7 +10,7 @@ The wim file's owner is [empyreal96](https://empyreal96.github.io)
 
 ### discontinued
 This project was discontinued
-Develop this project by working this repository
+Develop this project by downloading and working this repository
 #### why rpi3 is only supported?
 I'm using rpi3, so the rpi4 will be testing (only shows on rpi3!)
 
